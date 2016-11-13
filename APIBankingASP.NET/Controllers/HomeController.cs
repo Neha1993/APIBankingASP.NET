@@ -13,7 +13,7 @@ namespace APIBankingASP.NET.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Services()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -22,7 +22,7 @@ namespace APIBankingASP.NET.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Clever Interfaces for a Connected World";
 
             return View();
         }

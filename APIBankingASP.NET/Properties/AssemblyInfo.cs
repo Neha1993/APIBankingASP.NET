@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("APIBankingASP.NET")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("APIBanking ASP.NET Sample")]
+[assembly: AssemblyDescription("Free Samples, No Warrany")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("APIBankingASP.NET")]
+[assembly: AssemblyCompany("Quantiguous Solutions")]
+[assembly: AssemblyProduct("APIBanking ASP.NET Sample")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

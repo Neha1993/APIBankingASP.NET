@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model APIBankingASP.NET.Models.Fault
+@using (Html.BeginForm(new { @class = "form-horizontal" }))
+{
+    <fieldset>
+        <legend>Result</legend>
+        
+        <div class="form-group">
+            @Html.LabelFor(m => m.httpStatus, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.httpStatus)
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(m => m.code, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.code)
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.subCode, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.subCode)
+        </div>
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(m => m.reason, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.reason)
+        </div>
+
+    </fieldset>
+
+}

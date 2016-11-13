@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.quantiguous.com/services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="DomesticRemittanceByPartnerService" targetNamespace="http://www.quantiguous.com/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="DomesticRemittanceByPartnerServiceHttpBinding" originalBindingStyle="document" />
+        <generatedXSD location="DomesticRemittanceByPartnerService_InlineSchema1.xsd" />
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" targetNamespace="http://www.quantiguous.com/services">
+      <xsd:include schemaLocation="http://api.quantiguous.com/DomesticRemittanceByPartnerService?xsd=xsd0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="remitRequestMsg">
+    <wsdl:part name="remitParameters" element="tns:remit" />
+  </wsdl:message>
+  <wsdl:message name="remitResponseMsg">
+    <wsdl:part name="remitResult" element="tns:remitResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBalanceRequestMsg">
+    <wsdl:part name="getBalanceParameters" element="tns:getBalance" />
+  </wsdl:message>
+  <wsdl:message name="getBalanceResponseMsg">
+    <wsdl:part name="getBalanceResult" element="tns:getBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRemittanceStatusRequestMsg">
+    <wsdl:part name="getRemittanceStatusParameters" element="tns:getRemittanceStatus" />
+  </wsdl:message>
+  <wsdl:message name="getRemittanceStatusResponseMsg">
+    <wsdl:part name="getRemittanceStatusResult" element="tns:getRemittanceStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTransactionsRequestMsg">
+    <wsdl:part name="getTransactionsParameters" element="tns:getTransactions" />
+  </wsdl:message>
+  <wsdl:message name="getTransactionsResponseMsg">
+    <wsdl:part name="getTransactionsResult" element="tns:getTransactionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DomesticRemittanceByPartnerService">
+    <wsdl:operation name="remit">
+      <wsdl:input name="remitRequest" message="tns:remitRequestMsg" />
+      <wsdl:output name="remitResponse" message="tns:remitResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:input name="getBalanceRequest" message="tns:getBalanceRequestMsg" />
+      <wsdl:output name="getBalanceResponse" message="tns:getBalanceResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getRemittanceStatus">
+      <wsdl:input name="getRemittanceStatusRequest" message="tns:getRemittanceStatusRequestMsg" />
+      <wsdl:output name="getRemittanceStatusResponse" message="tns:getRemittanceStatusResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getTransactions">
+      <wsdl:input name="getTransactionsRequest" message="tns:getTransactionsRequestMsg" />
+      <wsdl:output name="getTransactionsResponse" message="tns:getTransactionsResponseMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DomesticRemittanceByPartnerServiceHttpBinding" type="tns:DomesticRemittanceByPartnerService">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="remit">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/DomesticRemittanceByPartnerService/remit" />
+      <wsdl:input name="remitRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="remitResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/DomesticRemittanceByPartnerService/getBalance" />
+      <wsdl:input name="getBalanceRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBalanceResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRemittanceStatus">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/DomesticRemittanceByPartnerService/getRemittanceStatus" />
+      <wsdl:input name="getRemittanceStatusRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRemittanceStatusResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransactions">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/DomesticRemittanceByPartnerService/getTransactions" />
+      <wsdl:input name="getTransactionsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTransactionsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DomesticRemittanceByPartnerServiceHttpService">
+    <wsdl:port name="DomesticRemittanceByPartnerServiceHttpPort" binding="tns:DomesticRemittanceByPartnerServiceHttpBinding">
+      <soap12:address location="http://api.quantiguous.com/DomesticRemittanceByPartnerService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
