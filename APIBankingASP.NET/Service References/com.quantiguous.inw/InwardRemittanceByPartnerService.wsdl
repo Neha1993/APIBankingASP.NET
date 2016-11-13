@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.quantiguous.com/services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="InwardRemittanceByPartnerService" targetNamespace="http://www.quantiguous.com/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="InwardRemittanceByPartnerServiceHttpBinding" originalBindingStyle="document" />
+        <generatedXSD location="InwardRemittanceByPartnerService_InlineSchema1.xsd" />
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" targetNamespace="http://www.quantiguous.com/services">
+      <xsd:include schemaLocation="http://api.quantiguous.com/InwardRemittanceByPartnerService?xsd=xsd0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="remitRequestMsg">
+    <wsdl:part name="remitParameters" element="tns:remit" />
+  </wsdl:message>
+  <wsdl:message name="remitResponseMsg">
+    <wsdl:part name="remitResult" element="tns:remitResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBalanceRequestMsg">
+    <wsdl:part name="getBalanceParameters" element="tns:getBalance" />
+  </wsdl:message>
+  <wsdl:message name="getBalanceResponseMsg">
+    <wsdl:part name="getBalanceResult" element="tns:getBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRemittanceStatusRequestMsg">
+    <wsdl:part name="getRemittanceStatusParameters" element="tns:getRemittanceStatus" />
+  </wsdl:message>
+  <wsdl:message name="getRemittanceStatusResponseMsg">
+    <wsdl:part name="getRemittanceStatusResult" element="tns:getRemittanceStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InwardRemittanceByPartnerService">
+    <wsdl:operation name="remit">
+      <wsdl:documentation>To remit funds on behalf of a remitter. The transaction will be accepted only if all checks and balances are passed. These include, sufficient funds in the drawing account, a valid purpose code, the transaction being within limits (both transaction and velocity).
+In case the remitter name and/or the beneficiary name is found in the scan lists, additional identity information is necessary for the transaction to be accepted.
+Certain trasfer types are not processed in realtime, and require a second call to getRemittanceStatus to find out the status of the transaction.
+In a few cases, additional information may be required to be submitted, even after the transaction has been accepted and completed. In case additional information is required, it is indicated in the response.</wsdl:documentation>
+      <wsdl:input name="remitRequest" message="tns:remitRequestMsg" />
+      <wsdl:output name="remitResponse" message="tns:remitResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:documentation>To get the balance of the drawing account maintained by the partner with the bank. Remittance transactions are accpeted only when there are sufficient funds to debit.</wsdl:documentation>
+      <wsdl:input name="getBalanceRequest" message="tns:getBalanceRequestMsg" />
+      <wsdl:output name="getBalanceResponse" message="tns:getBalanceResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getRemittanceStatus">
+      <wsdl:documentation>To get the status of a remittance transaction that was previously submitted. This is necessary for certain types of transfer, where the credit is not immediate. It is also useful to get the status of any review that was initiated for the transaction. </wsdl:documentation>
+      <wsdl:input name="getRemittanceStatusRequest" message="tns:getRemittanceStatusRequestMsg" />
+      <wsdl:output name="getRemittanceStatusResponse" message="tns:getRemittanceStatusResponseMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InwardRemittanceByPartnerServiceHttpBinding" type="tns:InwardRemittanceByPartnerService">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="remit">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/remit" />
+      <wsdl:input name="remitRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="remitResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/getBalance" />
+      <wsdl:input name="getBalanceRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getBalanceResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRemittanceStatus">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/getRemittanceStatus" />
+      <wsdl:input name="getRemittanceStatusRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRemittanceStatusResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InwardRemittanceByPartnerServiceHttpService">
+    <wsdl:port name="InwardRemittanceByPartnerServiceHttpPort" binding="tns:InwardRemittanceByPartnerServiceHttpBinding">
+      <soap12:address location="http://api.quantiguous.com/InwardRemittanceByPartnerService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

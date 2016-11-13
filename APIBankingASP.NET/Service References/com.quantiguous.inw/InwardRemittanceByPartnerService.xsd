@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://www.quantiguous.com/services" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="versionType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="5" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="referenceNoType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="32" />
+      <xsd:minLength value="1" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="nonNegativeFloat">
+    <xsd:restriction base="xsd:float">
+      <xsd:minInclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="positiveFloat">
+    <xsd:restriction base="xsd:float">
+      <xsd:minExclusive value="0" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="currencyCodeType">
+    <xsd:annotation>
+      <xsd:documentation>ISO 4217</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="INR" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="remitterToBeneficiaryInfoType">
+    <xsd:annotation>
+      <xsd:documentation>
+				The minimum length of 2 is as per bank end systems.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="2" />
+      <xsd:maxLength value="120" />
+      <xsd:pattern value="(\w|\s|\.|,|-)*" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="mobileNoType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="7" />
+      <xsd:maxLength value="16" />
+      <xsd:whiteSpace value="collapse" />
+      <xsd:pattern value="\d{7,16}" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="emailIDType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="3" />
+      <xsd:maxLength value="100" />
+      <xsd:pattern value=".+@.+" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="postalCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="15" />
+      <xsd:pattern value="(\w|-|)*" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="cityNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="50" />
+      <xsd:pattern value="(&quot;|(|)|:|\?|\{|\}|!|@|#|\|%|!|\w|\.|-| )*" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="stateOrProvinceNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="50" />
+      <xsd:pattern value="(&quot;|(|)|:|\?|\{|\}|!|@|#|\|%|!|\w|\.|-| )*" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="fullNameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+      <xsd:pattern value="(&quot;|(|)|:|\?|\{|\}|!|@|#|\|%|!|\w|\.|-| )*" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="addressLineType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="35" />
+      <xsd:pattern value="(&quot;|(|)|:|\?|\{|\}|!|@|#|\|%|!|\w|\.|-| )*" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="referenceNoType1">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="32" />
+      <xsd:minLength value="0" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

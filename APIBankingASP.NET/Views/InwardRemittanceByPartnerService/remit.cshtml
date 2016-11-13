@@ -1,0 +1,211 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model APIBankingASP.NET.Models.InwardRemittanceByPartnerService.RemitRequest
+@using (Html.BeginForm(new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.EditorFor(m => m);
+
+    <fieldset>
+        <legend>Request</legend>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.uniqueRequestNo, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.uniqueRequestNo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.partnerCode, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.partnerCode, new { @class = "form-control" })
+        </div>
+
+
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Mandatory Information</legend>
+        <div class="form-group">
+            @Html.LabelFor(m => m.remitterType, new { @class = "control-label col-md-3" })
+            @Html.EnumDropDownListFor(m => m.remitterType, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.remitterName, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.remitterName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("remitter address line 1", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.remitterAddress.address1, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.transferType, new { @class = "control-label col-md-3" })
+            @Html.EnumDropDownListFor(m => m.transferType, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.transferAmount, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.transferAmount, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.beneficiaryType, new { @class = "control-label col-md-3" })
+            @Html.EnumDropDownListFor(m => m.beneficiaryType, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.beneficiaryName, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryName, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("beneficiary Address Line 1", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryAddress.address1, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.beneficiaryAccountNo, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryAccountNo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.beneficiaryIFSC, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryIFSC, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.purposeCode, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.purposeCode, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.remitterToBeneficiaryInfo, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.remitterToBeneficiaryInfo, new { @class = "form-control" })
+        </div>
+
+ 
+    </fieldset>
+
+  
+
+    <fieldset>
+        <legend>AML (Recommended)</legend>
+
+        <table>
+            @if (Model.remitterIdentities != null)
+            {
+                <thead>Remitter Identity Document</thead>
+
+                for (int i = 0; i < Model.remitterIdentities.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.remitterIdentities[i].idType)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.remitterIdentities[i].idNumber)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.remitterIdentities[i].idCountry)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.remitterIdentities[i].issueDate)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.remitterIdentities[i].expiryDate)
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            @Html.EditorFor(m => m.remitterIdentities[i].idType)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.remitterIdentities[i].idNumber)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.remitterIdentities[i].idCountry)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.remitterIdentities[i].issueDate)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.remitterIdentities[i].expiryDate)
+                        </td>
+
+                    </tr>
+                }
+            }
+        </table>
+
+        <table>
+            @if (Model.beneficiaryIdentities != null)
+            {
+                <thead>Beneficiary Identity Document</thead>
+
+                for (int i = 0; i < Model.beneficiaryIdentities.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        <tr>
+                            <td>
+                                @Html.LabelFor(m => m.beneficiaryIdentities[i].idType)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.beneficiaryIdentities[i].idNumber)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.beneficiaryIdentities[i].idCountry)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.beneficiaryIdentities[i].issueDate)
+                            </td>
+                            <td>
+                                @Html.LabelFor(m => m.beneficiaryIdentities[i].expiryDate)
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            @Html.EditorFor(m => m.beneficiaryIdentities[i].idType)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.beneficiaryIdentities[i].idNumber)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.beneficiaryIdentities[i].idCountry)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.beneficiaryIdentities[i].issueDate)
+                        </td>
+                        <td>
+                            @Html.EditorFor(m => m.beneficiaryIdentities[i].expiryDate)
+                        </td>
+
+                    </tr>
+                }
+            }
+        </table>  
+    </fieldset>
+
+    <fieldset>
+        <legend>Notifications (Optional)</legend>
+
+        <div class="form-group">
+            @Html.Label("remitter mobile", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.remitterContact.mobileNo, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("beneficiary mobile", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryContact.mobileNo, new { @class = "form-control" })
+        </div>
+    </fieldset>
+
+    <button type="submit">Call</button>
+}

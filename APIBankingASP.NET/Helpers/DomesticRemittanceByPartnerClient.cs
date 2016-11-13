@@ -1,5 +1,6 @@
 ﻿using APIBanking;
 using APIBankingASP.NET.com.quantiguous.smb;
+using APIBankingASP.NET.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace APIBankingASP.NET
             {
                 System.Net.ServicePointManager.SecurityProtocol = env.getSecurityProtocol();
 
-                System.ServiceModel.Web.WebOperationContext.Current.OutgoingRequest.UserAgent = "APIBanking.NET";
+                System.ServiceModel.Web.WebOperationContext.Current.OutgoingRequest.UserAgent = App.USER_AGENT;
 
 
                 IDictionaryEnumerator headers = env.getHeaders().GetEnumerator();

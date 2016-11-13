@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="81c9423b-3a58-4f53-92d8-eca93fc35f72" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://api.quantiguous.com/InwardRemittanceByPartnerService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="InwardRemittanceByPartnerService.wsdl" MetadataType="Wsdl" ID="54c9a8df-b809-49ac-9ea1-d63b44e03250" SourceId="1" SourceUrl="https://api.quantiguous.com/InwardRemittanceByPartnerService?wsdl" />
+    <MetadataFile FileName="InwardRemittanceByPartnerService.xsd" MetadataType="Schema" ID="4be2ef48-4c0c-4208-8035-7a74deca31a5" SourceId="1" SourceUrl="https://api.quantiguous.com/InwardRemittanceByPartnerService?xsd=xsd1" />
+    <MetadataFile FileName="InwardRemittanceByPartnerService1.xsd" MetadataType="Schema" ID="eb4cd3bc-e75d-4308-8b5b-b892bd1ae8c5" SourceId="1" SourceUrl="https://api.quantiguous.com/InwardRemittanceByPartnerService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

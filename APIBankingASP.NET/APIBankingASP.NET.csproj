@@ -155,14 +155,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DomesticRemittanceByPartnerServiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DomesticRemittanceByPartnerClient.cs" />
+    <Compile Include="Controllers\InwardRemittanceByPartnerServiceController.cs" />
+    <Compile Include="Helpers\App.cs" />
+    <Compile Include="Helpers\DomesticRemittanceByPartnerClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\InwardRemittanceByPartnerClient.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\Fault.cs" />
-    <Compile Include="Models\GetBalance.cs" />
+    <Compile Include="Models\DomesticRemittanceByPartnerService.cs" />
+    <Compile Include="Models\InwardRemittanceByPartnerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\com.quantiguous.inw\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\com.quantiguous.smb\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +205,30 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getBalanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getRemittanceStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getRemittanceStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.remitResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.remitResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\com.quantiguous.inw\configuration91.svcinfo" />
+    <None Include="Service References\com.quantiguous.inw\configuration.svcinfo" />
+    <None Include="Service References\com.quantiguous.inw\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\com.quantiguous.smb\APIBankingASP.NET.com.quantiguous.smb.getBalanceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -220,6 +253,13 @@
     <Content Include="Service References\com.quantiguous.smb\APIBankingASP.NET.com.quantiguous.smb.remitResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\com.quantiguous.inw\InwardRemittanceByPartnerService.wsdl" />
+    <None Include="Service References\com.quantiguous.inw\InwardRemittanceByPartnerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\com.quantiguous.inw\InwardRemittanceByPartnerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\com.quantiguous.smb\configuration91.svcinfo" />
     <None Include="Service References\com.quantiguous.smb\configuration.svcinfo" />
     <None Include="Service References\com.quantiguous.smb\Reference.svcmap">
@@ -242,13 +282,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\DomesticRemittanceByPartnerService\getBalance.cshtml" />
-    <Content Include="Views\DomesticRemittanceByPartnerService\remit.cshtml" />
+    <Content Include="Views\InwardRemittanceByPartnerService\remit.cshtml" />
     <Content Include="Views\DomesticRemittanceByPartnerService\getBalanceResult.cshtml" />
     <None Include="Service References\com.quantiguous.smb\DomesticRemittanceByPartnerService.wsdl" />
     <None Include="Service References\com.quantiguous.smb\DomesticRemittanceByPartnerService.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\Fault.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Credentials.cshtml" />
+    <Content Include="Views\InwardRemittanceByPartnerService\remitResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,6 +308,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\com.quantiguous.inw\" />
     <WCFMetadataStorage Include="Service References\com.quantiguous.smb\" />
   </ItemGroup>
   <PropertyGroup>

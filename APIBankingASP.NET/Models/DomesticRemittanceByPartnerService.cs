@@ -10,17 +10,16 @@ namespace APIBankingASP.NET.Models
     { 
         public class GetBalanceRequest : Credentials
         {
-            public String version { get; set; }
             public String partnerCode { get; set; }
             public String customerID { get; set; }
-            public String accountNo { get; set; } 
-        }
+            public String accountNo { get; set; }
+    }
         public class GetBalanceResult
         {
-            public String version { get; set; }
-            public String accountCurrencyCode { get; set; }
-            public Decimal accountBalanceAmount { get; set; }
-            public Boolean lowBalanceAlert { get; set; }
+            public String version;
+            public String accountCurrencyCode;
+            public Decimal accountBalanceAmount;
+            public Boolean lowBalanceAlert;
         }
     }
 }
