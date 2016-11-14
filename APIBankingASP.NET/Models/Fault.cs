@@ -8,46 +8,29 @@ namespace APIBankingASP.NET.Models
 {
     public class Fault
     {
-        public String httpStatus { get; set; }
-        public String code { get; set; }
-        public String subCode { get; set; }
-        public String reason { get; set; }
+        public String code { get; }
+        public String subCode { get; }
+        public String message { get; }
+        public String messageInserts { get; }
+        public String responseText { get; }
 
-        public Fault(Exception ex)
+        public Fault(APIBanking.Fault ex)
         {
-            if (ex is TimeoutException)
-            {       
-                this.httpStatus = "504";
-                this.reason = ex.Message;
-            }
-            else if (ex is FaultException)
-            {
 
-                // soap faults come with status 500
-                this.httpStatus = "500";
+            // for information on faultCode, refer documentation 
+            this.code = ex.Code;
 
-                // for information on faultCode, refer documentation 
-                this.code = APIBanking.SoapClient.formatFaultCode(((FaultException)ex).Code.SubCode);
+            // faultSubCode is for information only, do not use in your application, this is subject to change without notice
+            this.subCode = ex.SubCode;
 
-                // faultSubCode is for information only, do not use in your application, this is subject to change without notice
-                if (((FaultException)ex).Code.SubCode.SubCode != null)
-                {
-                    this.subCode = APIBanking.SoapClient.formatFaultCode(((FaultException)ex).Code.SubCode.SubCode);
-                }
+            // an english message, you can choose to show this to your users
+            this.message = ex.Message;
 
-                // an english message, you can choose to show this to your users
-                this.reason = ((FaultException)ex).Reason.ToString();
-            }
-            else if (ex is CommunicationException)
-            {
-                this.httpStatus = "503";
-                this.reason = ex.Message;
-            }
-            else
-            {
-                this.httpStatus = "502";
-                this.reason = ex.Message;
-            }
+            // additional diagnostic information (may be asked by tech-support)
+            this.messageInserts = ex.MessageInserts;
+
+            // in some cases the response is also parsed and made available (may be asked by support)
+            this.responseText = ex.responseText;
         }
     }
 }

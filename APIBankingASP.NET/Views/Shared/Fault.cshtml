@@ -10,11 +10,6 @@
         <legend>Result</legend>
         
         <div class="form-group">
-            @Html.LabelFor(m => m.httpStatus, new { @class = "control-label col-md-3" })
-            @Html.DisplayFor(m => m.httpStatus)
-        </div>
-        <br/>
-        <div class="form-group">
             @Html.LabelFor(m => m.code, new { @class = "control-label col-md-3" })
             @Html.DisplayFor(m => m.code)
         </div>
@@ -25,8 +20,17 @@
         </div>
         <br />
         <div class="form-group">
-            @Html.LabelFor(m => m.reason, new { @class = "control-label col-md-3" })
-            @Html.DisplayFor(m => m.reason)
+            @Html.LabelFor(m => m.message, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.message)
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(m => m.messageInserts, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.messageInserts)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.responseText, new { @class = "control-label col-md-3" })
+            @Html.DisplayFor(m => m.responseText)
         </div>
 
     </fieldset>

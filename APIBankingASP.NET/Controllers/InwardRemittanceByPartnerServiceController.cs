@@ -7,6 +7,7 @@ using APIBankingASP.NET.Models.InwardRemittanceByPartnerService;
 using APIBankingASP.NET.Helpers;
 using System.ServiceModel;
 using APIBanking;
+using System.ServiceModel.Security;
 
 namespace APIBankingASP.NET.Controllers
 {
@@ -49,6 +50,7 @@ namespace APIBankingASP.NET.Controllers
                 return View(request);
             }
 
+            APIBankingASP.NET.Models.Fault fault;
             APIBanking.Environment env = request.buildEnvironment();
 
             com.quantiguous.inw.remit apiReq = new com.quantiguous.inw.remit();
@@ -106,11 +108,23 @@ namespace APIBankingASP.NET.Controllers
                 return View("remitResult", result);
 
             }
-            catch (Exception ex)
+            /* 
+             * the following exceptions have to be caught separately, even when you handle then the same way 
+             * this is because of the way the APIBanking.Fault is created
+             */
+            catch (MessageSecurityException e)
             {
-                APIBankingASP.NET.Models.Fault fault = new APIBankingASP.NET.Models.Fault(ex);
-                return View("fault", fault);
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
             }
+            catch (FaultException e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            catch (Exception e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            return View("fault", fault);
         }
 
         private com.quantiguous.inw.remitterType getRemitterType(PartyType partyType)
