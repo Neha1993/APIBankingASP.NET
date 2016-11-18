@@ -20,10 +20,10 @@ namespace APIBankingASP.NET.Controllers
             req.appID = "299915";
             req.customerID = "299915";
             req.debitAccountNo = "000380800000781";
-            req.beneficiaryName = "Gourav Darjee";
+            req.beneficiaryName = "Quantiguous Solutions";
             req.beneficiaryAddress.address1 = "Wilston Road";
             req.beneficiaryAddress.country = "IN";
-            req.beneficiaryContact.emailID = "sandeep.ghule@qualitykiosk.com";
+            req.beneficiaryContact.emailID = "hello@quantiguous.com";
             req.beneficiaryContact.mobileNo = "9561234523";
             req.beneficiaryAccountNo = "026291800001191";
             req.beneficiaryIFSCCode = "HDFC0000001";
@@ -31,7 +31,7 @@ namespace APIBankingASP.NET.Controllers
             req.beneficiaryMMID = "9532870";
             req.transferType = TransferType.NEFT;
             req.transferAmount = 100;
-            req.rmtrToBeneInfo = "FUND TRANSFER";
+            req.rmtrToBeneInfo = "OnBoarding";
             
             // transfer
             return View(req);
