@@ -18,17 +18,10 @@ namespace APIBankingASP.NET.Controllers
             TransferRequest req = new TransferRequest();
             req.uniqueRequestNo = Guid.NewGuid().ToString().Replace("-", "");
             req.appID = "299915";
-           // req.purposeCode = "";
             req.customerID = "299915";
             req.debitAccountNo = "000380800000781";
-            // req.beneficiaryType.beneficiaryCode = "";
             req.beneficiaryName = "Gourav Darjee";
             req.beneficiaryAddress.address1 = "Wilston Road";
-         //   req.beneficiaryDetail.beneficiaryAddress.address2 = "";
-         //   req.beneficiaryDetail.beneficiaryAddress.address3 = "";
-         //   req.beneficiaryDetail.beneficiaryAddress.postalCode = "";
-         //   req.beneficiaryDetail.beneficiaryAddress.city = "";
-         //   req.beneficiaryDetail.beneficiaryAddress.stateOrProvince = "";
             req.beneficiaryAddress.country = "IN";
             req.beneficiaryContact.emailID = "sandeep.ghule@qualitykiosk.com";
             req.beneficiaryContact.mobileNo = "9561234523";
