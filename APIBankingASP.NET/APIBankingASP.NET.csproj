@@ -154,6 +154,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DomesticRemittanceByPartnerServiceController.cs" />
+    <Compile Include="Controllers\FundsTransferByCustomerService2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InwardRemittanceByPartnerServiceController.cs" />
     <Compile Include="Helpers\App.cs" />
@@ -161,12 +162,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FundsTransferByCustomerClient.cs" />
     <Compile Include="Helpers\InwardRemittanceByPartnerClient.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\Fault.cs" />
     <Compile Include="Models\DomesticRemittanceByPartnerService.cs" />
+    <Compile Include="Models\FundsTransferByCustomerService2.cs" />
     <Compile Include="Models\InwardRemittanceByPartnerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\com.quantiguous.ft2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\com.quantiguous.inw\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,6 +210,36 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.getBalanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.getBalanceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.getStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.getStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.payInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.payInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.transferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.ft2\APIBankingASP.NET.com.quantiguous.ft2.transferResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\com.quantiguous.ft2\configuration91.svcinfo" />
+    <None Include="Service References\com.quantiguous.ft2\configuration.svcinfo" />
+    <None Include="Service References\com.quantiguous.ft2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getBalanceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -220,6 +258,10 @@
     <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.remitResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\com.quantiguous.ft2\fundsTransferByCustomerService2.wsdl" />
+    <None Include="Service References\com.quantiguous.ft2\fundsTransferByCustomerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\com.quantiguous.inw\configuration91.svcinfo" />
     <None Include="Service References\com.quantiguous.inw\configuration.svcinfo" />
     <None Include="Service References\com.quantiguous.inw\Reference.svcmap">
@@ -271,9 +313,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\InwardRemittanceByPartnerService\Shared\Error.cshtml" />
+    <Content Include="Views\InwardRemittanceByPartnerService\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -285,9 +326,12 @@
     <None Include="Service References\com.quantiguous.smb\DomesticRemittanceByPartnerService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Shared\Fault.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Credentials.cshtml" />
+    <Content Include="Views\InwardRemittanceByPartnerService\Shared\Fault.cshtml" />
+    <Content Include="Views\InwardRemittanceByPartnerService\Shared\EditorTemplates\Credentials.cshtml" />
     <Content Include="Views\InwardRemittanceByPartnerService\remitResult.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\transfer.cshtml" />
+    <Content Include="Views\View.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\transferResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +349,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\com.quantiguous.ft2\" />
     <WCFMetadataStorage Include="Service References\com.quantiguous.inw\" />
     <WCFMetadataStorage Include="Service References\com.quantiguous.smb\" />
   </ItemGroup>
