@@ -10,26 +10,21 @@ namespace APIBankingASP.NET.Models
     {
         public class BeneficiaryAddress
         {
-            public String address1 { get; set; }
-            public String address2 { get; set; }
-            public String address3 { get; set; }
-            public String postalCode { get; set; }
-            public String city { get; set; }
-            public String stateOrProvince { get; set; }
-            public String country { get; set; }
+            public String beneficiaryAddress1 { get; set; }
+            public String beneficiaryAddress2 { get; set; }
+            public String beneficiaryAddress3 { get; set; }
+            public String beneficiaryPostalCode { get; set; }
+            public String beneficiaryCity { get; set; }
+            public String beneficiaryStateOrProvince { get; set; }
+            public String beneficiaryCountry { get; set; }
         }
             
         public class BeneficiaryContact
         {
-            public String mobileNo { get; set; }
-            public String emailID { get; set; }
+            public String beneficiaryMobileNo { get; set; }
+            public String beneficiaryEmailID { get; set; }
         }
 
-
-
-     
-
-  
         public enum TransferType
         {
             FT,

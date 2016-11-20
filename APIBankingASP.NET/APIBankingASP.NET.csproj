@@ -329,8 +329,9 @@
     <Content Include="Views\Shared\Fault.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Credentials.cshtml" />
     <Content Include="Views\InwardRemittanceByPartnerService\remitResult.cshtml" />
-    <Content Include="Views\FundsTransferByCustomerService2\transfer.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\transferResult.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\transferWithBeneCode.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\transferWithBeneDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

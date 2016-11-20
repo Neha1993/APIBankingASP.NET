@@ -12,29 +12,49 @@ namespace APIBankingASP.NET.Controllers
 {
     public class FundsTransferByCustomerService2Controller : Controller
     {
-        // GET: FundsTransferByCustomerService
-        public ActionResult transfer()
+
+        private TransferRequest getTransferRequest (String appID, String customerID, String debitAccountNo, String purposeCode)
         {
             TransferRequest req = new TransferRequest();
             req.uniqueRequestNo = Guid.NewGuid().ToString().Replace("-", "");
-            req.appID = "299915";
-            req.customerID = "299915";
-            req.debitAccountNo = "000380800000781";
+            req.appID = appID;
+            req.customerID = customerID;
+            req.debitAccountNo = debitAccountNo;
+            req.transferType = TransferType.NEFT;
+            req.transferAmount = 100;
+            req.rmtrToBeneInfo = "OnBoarding";
+            req.purposeCode = purposeCode;
+            return req;
+        }
+        // GET: FundsTransferByCustomerService with beneficiary detail
+        public ActionResult transferWithBeneDetail()
+        {
+            TransferRequest req;
+            req = getTransferRequest("299915", "299915", "000380800000781", null);
             req.beneficiaryName = "Quantiguous Solutions";
-            req.beneficiaryAddress.address1 = "Wilston Road";
-            req.beneficiaryAddress.country = "IN";
-            req.beneficiaryContact.emailID = "hello@quantiguous.com";
-            req.beneficiaryContact.mobileNo = "9561234523";
+            req.beneficiaryAddress.beneficiaryAddress1 = "Wilston Road";
+            req.beneficiaryAddress.beneficiaryCountry = "IN";
+            req.beneficiaryContact.beneficiaryEmailID = "hello@quantiguous.com";
+            req.beneficiaryContact.beneficiaryMobileNo = "9561234523";
             req.beneficiaryAccountNo = "026291800001191";
             req.beneficiaryIFSCCode = "HDFC0000001";
             req.beneficiaryMobileForMMID = "9869581569";
             req.beneficiaryMMID = "9532870";
-            req.transferType = TransferType.NEFT;
-            req.transferAmount = 100;
-            req.rmtrToBeneInfo = "OnBoarding";
+
+            // transfer with bene detail view
+             return View("transferWithBeneDetail", req);
             
-            // transfer
-            return View(req);
+        }
+
+        // GET: FundsTransferByCustomerService with beneficiary code
+        public ActionResult transferWithBeneCode()
+        {
+            TransferRequest req;
+            req = getTransferRequest("26528", "26528", "000183200000030", "DOSI");
+            req.beneficiaryCode = "ESECURE";
+
+            // transfer with bene code
+            return View("transferWithBeneCode", req);
         }
 
 
@@ -66,7 +86,7 @@ namespace APIBankingASP.NET.Controllers
             }
             else
             {
-                apiReq.beneficiary.Item = getBeneficiaryCode(request.beneficiaryCode);
+                apiReq.beneficiary = getBeneficiaryCode(request.beneficiaryCode);
             }
 
             apiReq.transferType = getTransferType(request.transferType);
@@ -190,16 +210,16 @@ namespace APIBankingASP.NET.Controllers
             name.Item = request.beneficiaryName;
 
             detail.beneficiaryName = name;
-            addr.address1 = request.beneficiaryAddress.address1;
-            addr.address2 = request.beneficiaryAddress.address2;
-            addr.address3 = request.beneficiaryAddress.address3;
-            addr.postalCode = request.beneficiaryAddress.postalCode;
-            addr.city = request.beneficiaryAddress.city;
-            addr.stateOrProvince = request.beneficiaryAddress.stateOrProvince;
-            addr.country = request.beneficiaryAddress.country;
+            addr.address1 = request.beneficiaryAddress.beneficiaryAddress1;
+            addr.address2 = request.beneficiaryAddress.beneficiaryAddress2;
+            addr.address3 = request.beneficiaryAddress.beneficiaryAddress3;
+            addr.postalCode = request.beneficiaryAddress.beneficiaryPostalCode;
+            addr.city = request.beneficiaryAddress.beneficiaryCity;
+            addr.stateOrProvince = request.beneficiaryAddress.beneficiaryStateOrProvince;
+            addr.country = request.beneficiaryAddress.beneficiaryCountry;
 
-            contact.mobileNo = request.beneficiaryContact.mobileNo;
-            contact.emailID = request.beneficiaryContact.emailID;
+            contact.mobileNo = request.beneficiaryContact.beneficiaryMobileNo;
+            contact.emailID = request.beneficiaryContact.beneficiaryEmailID;
 
 
             detail.beneficiaryAddress = addr;

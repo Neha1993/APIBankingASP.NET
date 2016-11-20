@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model APIBankingASP.NET.Models.FundsTransferByCustomerService2.TransferRequest
-@using (Html.BeginForm(new { @class = "form-horizontal" }))
+@using (Html.BeginForm("transfer", "FundsTransferByCustomerService2"))
 {
     @Html.EditorFor(m => m)
 
@@ -20,22 +20,18 @@
             @Html.LabelFor(m => m.debitAccountNo, new { @class = "control-label col-md-3" })
             @Html.EditorFor(m => m.debitAccountNo, new { @class = "form-control" })
         </div>
-       
+      
         <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryAddress.address1, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryAddress.address1, new { @class = "form-control" })
+            @Html.LabelFor(m => m.beneficiaryAddress.beneficiaryAddress1, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryAddress.beneficiaryAddress1, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryAddress.country, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryAddress.country, new { @class = "form-control" })
+            @Html.LabelFor(m => m.beneficiaryContact.beneficiaryEmailID, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryContact.beneficiaryEmailID, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryContact.emailID, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryContact.emailID, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryContact.mobileNo, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryContact.mobileNo, new { @class = "form-control" })
+            @Html.LabelFor(m => m.beneficiaryContact.beneficiaryMobileNo, new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryContact.beneficiaryMobileNo, new { @class = "form-control" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.beneficiaryName, new { @class = "control-label col-md-3" })
@@ -62,12 +58,8 @@
             @Html.EditorFor(m => m.transferAmount, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.transferCurrencyCode, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.transferCurrencyCode, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
             @Html.LabelFor(m => m.transferType, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.transferType, new { @class = "form-control" })
+            @Html.EnumDropDownListFor(m => m.transferType, new { @class = "form-control" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.rmtrToBeneInfo, new { @class = "control-label col-md-3" })
