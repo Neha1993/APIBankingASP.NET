@@ -313,8 +313,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\InwardRemittanceByPartnerService\Shared\Error.cshtml" />
-    <Content Include="Views\InwardRemittanceByPartnerService\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -326,11 +326,10 @@
     <None Include="Service References\com.quantiguous.smb\DomesticRemittanceByPartnerService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\InwardRemittanceByPartnerService\Shared\Fault.cshtml" />
-    <Content Include="Views\InwardRemittanceByPartnerService\Shared\EditorTemplates\Credentials.cshtml" />
+    <Content Include="Views\Shared\Fault.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Credentials.cshtml" />
     <Content Include="Views\InwardRemittanceByPartnerService\remitResult.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\transfer.cshtml" />
-    <Content Include="Views\View.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\transferResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
