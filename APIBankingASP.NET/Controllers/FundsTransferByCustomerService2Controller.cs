@@ -32,10 +32,10 @@ namespace APIBankingASP.NET.Controllers
             TransferRequest req;
             req = getTransferRequest("299915", "299915", "000380800000781", null);
             req.beneficiaryName = "Quantiguous Solutions";
-            req.beneficiaryAddress.beneficiaryAddress1 = "Wilston Road";
-            req.beneficiaryAddress.beneficiaryCountry = "IN";
-            req.beneficiaryContact.beneficiaryEmailID = "hello@quantiguous.com";
-            req.beneficiaryContact.beneficiaryMobileNo = "9561234523";
+            req.beneficiaryAddress.address1 = "Wilston Road";
+            req.beneficiaryAddress.country = "IN";
+            req.beneficiaryContact.emailID = "hello@quantiguous.com";
+            req.beneficiaryContact.mobileNo = "9561234523";
             req.beneficiaryAccountNo = "026291800001191";
             req.beneficiaryIFSCCode = "HDFC0000001";
             req.beneficiaryMobileForMMID = "9869581569";
@@ -67,6 +67,30 @@ namespace APIBankingASP.NET.Controllers
             }
 
             APIBankingASP.NET.Models.Fault fault;
+
+           //this is to get the certificate file source path, if certificate is passed then it will go along with the request
+            string sourcePath = request.pkcs12FilePath;
+            if (sourcePath != null)
+            {
+                string filePath = sourcePath.Substring(0, sourcePath.LastIndexOf("\\"));
+                string fileName = sourcePath.Substring(sourcePath.LastIndexOf("\\") + 1);
+
+
+                string targetPath = @"\Users\Public\Certificate\";
+
+                // Use Path class to manipulate file and directory paths.
+                string sourceFile = System.IO.Path.Combine(filePath, fileName);
+                string destFile = System.IO.Path.Combine(targetPath, fileName);
+
+                if (!System.IO.Directory.Exists(targetPath))
+                {
+                    System.IO.Directory.CreateDirectory(targetPath);
+                }
+
+                // To copy a file to another location and 
+                // overwrite the destination file if it already exists.
+                System.IO.File.Copy(sourceFile, destFile, true);
+            }
             APIBanking.Environment env = request.buildEnvironment();
 
             com.quantiguous.ft2.transfer apiReq = new com.quantiguous.ft2.transfer();
@@ -210,16 +234,16 @@ namespace APIBankingASP.NET.Controllers
             name.Item = request.beneficiaryName;
 
             detail.beneficiaryName = name;
-            addr.address1 = request.beneficiaryAddress.beneficiaryAddress1;
-            addr.address2 = request.beneficiaryAddress.beneficiaryAddress2;
-            addr.address3 = request.beneficiaryAddress.beneficiaryAddress3;
-            addr.postalCode = request.beneficiaryAddress.beneficiaryPostalCode;
-            addr.city = request.beneficiaryAddress.beneficiaryCity;
-            addr.stateOrProvince = request.beneficiaryAddress.beneficiaryStateOrProvince;
-            addr.country = request.beneficiaryAddress.beneficiaryCountry;
+            addr.address1 = request.beneficiaryAddress.address1;
+            addr.address2 = request.beneficiaryAddress.address2;
+            addr.address3 = request.beneficiaryAddress.address3;
+            addr.postalCode = request.beneficiaryAddress.postalCode;
+            addr.city = request.beneficiaryAddress.city;
+            addr.stateOrProvince = request.beneficiaryAddress.stateOrProvince;
+            addr.country = request.beneficiaryAddress.country;
 
-            contact.mobileNo = request.beneficiaryContact.beneficiaryMobileNo;
-            contact.emailID = request.beneficiaryContact.beneficiaryEmailID;
+            contact.mobileNo = request.beneficiaryContact.mobileNo;
+            contact.emailID = request.beneficiaryContact.emailID;
 
 
             detail.beneficiaryAddress = addr;

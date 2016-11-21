@@ -22,16 +22,16 @@
         </div>
       
         <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryAddress.beneficiaryAddress1, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryAddress.beneficiaryAddress1, new { @class = "form-control" })
+            @Html.Label("beneficiaryAddress1", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryAddress.address1, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryContact.beneficiaryEmailID, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryContact.beneficiaryEmailID, new { @class = "form-control" })
+            @Html.Label("beneficiaryEmailID", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryContact.emailID, new { @class = "form-control" })
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.beneficiaryContact.beneficiaryMobileNo, new { @class = "control-label col-md-3" })
-            @Html.EditorFor(m => m.beneficiaryContact.beneficiaryMobileNo, new { @class = "form-control" })
+            @Html.Label("beneficiaryMobileNo", new { @class = "control-label col-md-3" })
+            @Html.EditorFor(m => m.beneficiaryContact.mobileNo, new { @class = "form-control" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.beneficiaryName, new { @class = "control-label col-md-3" })
