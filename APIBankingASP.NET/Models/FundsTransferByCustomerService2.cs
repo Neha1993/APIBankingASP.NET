@@ -25,11 +25,6 @@ namespace APIBankingASP.NET.Models
             public String emailID { get; set; }
         }
 
-
-
-     
-
-  
         public enum TransferType
         {
             FT,
