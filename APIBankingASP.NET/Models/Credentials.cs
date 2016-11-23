@@ -11,8 +11,6 @@ namespace APIBankingASP.NET.Models
         public String password { get; set; }
         public String client_key { get; set; }
         public String client_secret { get; set; }
-        public String pkcs12FilePath { get; set; }
-        public String pkcs12Password { get; set; }
 
         public Credentials()
         {
@@ -21,8 +19,7 @@ namespace APIBankingASP.NET.Models
             this.password = "";
             this.client_key = "5bbc3c5c-6225-4935-8146-523b5883097a";
             this.client_secret = "bP7eY0fA7tW7nX7yE6oY8qD7tF3yL3fE4uK0pJ7cP3kE0mV8rF";
-            this.pkcs12FilePath = "";
-            this.pkcs12Password = "";
+ 
         }
 
         public APIBanking.Environment buildEnvironment()
@@ -32,8 +29,7 @@ namespace APIBankingASP.NET.Models
               this.password,
               this.client_key,
               this.client_secret,
-              this.pkcs12FilePath,
-              this.pkcs12Password);
+              null);
         }
     }
 }

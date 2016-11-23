@@ -68,29 +68,6 @@ namespace APIBankingASP.NET.Controllers
 
             APIBankingASP.NET.Models.Fault fault;
 
-           //this is to get the certificate file source path, if certificate is passed then it will go along with the request
-            string sourcePath = request.pkcs12FilePath;
-            if (sourcePath != null)
-            {
-                string filePath = sourcePath.Substring(0, sourcePath.LastIndexOf("\\"));
-                string fileName = sourcePath.Substring(sourcePath.LastIndexOf("\\") + 1);
-
-
-                string targetPath = @"\Users\Public\Certificate\";
-
-                // Use Path class to manipulate file and directory paths.
-                string sourceFile = System.IO.Path.Combine(filePath, fileName);
-                string destFile = System.IO.Path.Combine(targetPath, fileName);
-
-                if (!System.IO.Directory.Exists(targetPath))
-                {
-                    System.IO.Directory.CreateDirectory(targetPath);
-                }
-
-                // To copy a file to another location and 
-                // overwrite the destination file if it already exists.
-                System.IO.File.Copy(sourceFile, destFile, true);
-            }
             APIBanking.Environment env = request.buildEnvironment();
 
             com.quantiguous.ft2.transfer apiReq = new com.quantiguous.ft2.transfer();
