@@ -31,7 +31,6 @@ namespace APIBankingASP.NET.Controllers
         {
             GetBalanceRequest req = new GetBalanceRequest();
 
-            req.version = "1.0";
             req.appID = "299915";
             req.customerID = "299915";
             req.AccountNumber = "000380800000781";
@@ -164,7 +163,6 @@ namespace APIBankingASP.NET.Controllers
             com.quantiguous.ft2.getBalance apiReq = new com.quantiguous.ft2.getBalance();
             com.quantiguous.ft2.getBalanceResponse apiRep;
 
-            apiReq.version = request.version;
             apiReq.appID = request.appID;
             apiReq.customerID = request.customerID;
             apiReq.AccountNumber = request.AccountNumber;
@@ -175,9 +173,9 @@ namespace APIBankingASP.NET.Controllers
 
                 GetBalanceResult result = new GetBalanceResult();
 
-                result.Version = apiRep.Version;
+                result.version = apiRep.Version;
                 result.accountCurrencyCode = apiRep.accountCurrencyCode.ToString();
-                result.accountBalanceAmount = apiRep.accountBalanceAmount;
+                result.accountBalanceAmount = Convert.ToDecimal(apiRep.accountBalanceAmount);
                 result.lowBalanceAlert = apiRep.lowBalanceAlert;
                 return View("getBalanceResult", result);
 

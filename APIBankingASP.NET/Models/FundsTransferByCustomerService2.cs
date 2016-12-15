@@ -107,7 +107,6 @@ namespace APIBankingASP.NET.Models
         public class GetBalanceRequest : Credentials
         {
             [Required]
-            public String version { get; set; }
             public String appID { get; set; }
             public String customerID { get; set; }
             public String AccountNumber { get; set; }
@@ -117,9 +116,9 @@ namespace APIBankingASP.NET.Models
         public class GetBalanceResult
         {
             [Required]
-            public String Version;
+            public String version;
             public String accountCurrencyCode;
-            public float accountBalanceAmount;
+            public Decimal accountBalanceAmount;
             public Boolean? lowBalanceAlert;
 
         }
