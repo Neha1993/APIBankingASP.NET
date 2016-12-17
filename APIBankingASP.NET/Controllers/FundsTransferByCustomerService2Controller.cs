@@ -13,7 +13,7 @@ namespace APIBankingASP.NET.Controllers
     public class FundsTransferByCustomerService2Controller : Controller
     {
 
-        private TransferRequest getTransferRequest (String appID, String customerID, String debitAccountNo, String purposeCode)
+        private TransferRequest getTransferRequest(String appID, String customerID, String debitAccountNo, String purposeCode)
         {
             TransferRequest req = new TransferRequest();
             req.uniqueRequestNo = Guid.NewGuid().ToString().Replace("-", "");
@@ -26,6 +26,19 @@ namespace APIBankingASP.NET.Controllers
             req.purposeCode = purposeCode;
             return req;
         }
+
+        public ActionResult getBalance()
+        {
+            GetBalanceRequest req = new GetBalanceRequest();
+
+            req.appID = "299915";
+            req.customerID = "299915";
+            req.AccountNumber = "000380800000781";
+            
+
+            return View(req);
+        }
+
         // GET: FundsTransferByCustomerService with beneficiary detail
         public ActionResult transferWithBeneDetail()
         {
@@ -42,8 +55,8 @@ namespace APIBankingASP.NET.Controllers
             req.beneficiaryMMID = "9532870";
 
             // transfer with bene detail view
-             return View("transferWithBeneDetail", req);
-            
+            return View("transferWithBeneDetail", req);
+
         }
 
         // GET: FundsTransferByCustomerService with beneficiary code
@@ -135,6 +148,59 @@ namespace APIBankingASP.NET.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult getbalance(GetBalanceRequest request)
+        {
+            if (TryValidateModel(request) == false)
+            {
+                return View(request);
+            }
+
+            APIBankingASP.NET.Models.Fault fault;
+
+            APIBanking.Environment env = request.buildEnvironment();
+
+            com.quantiguous.ft2.getBalance apiReq = new com.quantiguous.ft2.getBalance();
+            com.quantiguous.ft2.getBalanceResponse apiRep;
+
+            apiReq.appID = request.appID;
+            apiReq.customerID = request.customerID;
+            apiReq.AccountNumber = request.AccountNumber;
+            
+            try
+            {
+                apiRep = FundsTransferByCustomerClient.getBalance(env, apiReq);
+
+                GetBalanceResult result = new GetBalanceResult();
+
+                result.version = apiRep.Version;
+                result.accountCurrencyCode = apiRep.accountCurrencyCode.ToString();
+                result.accountBalanceAmount = Convert.ToDecimal(apiRep.accountBalanceAmount);
+                result.lowBalanceAlert = apiRep.lowBalanceAlert;
+                return View("getBalanceResult", result);
+
+            }
+            /* 
+             * the following exceptions have to be caught separately, even when you handle then the same way 
+             * this is because of the way the APIBanking.Fault is created
+             */
+            catch (MessageSecurityException e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            catch (FaultException e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            catch (Exception e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            return View("fault", fault);
+
+        }
+
+
         private LastTransferStatus getStatusCode(com.quantiguous.ft2.transactionStatusTypeStatusCode statusCode)
         {
             switch (statusCode)
@@ -162,7 +228,7 @@ namespace APIBankingASP.NET.Controllers
             // some default, when in doubt, do not send the money again
             return LastTransferStatus.IN_PROCESS;
         }
-   
+
 
         private TransferType? getTransferType(com.quantiguous.ft2.transferTypeType? transferType)
         {

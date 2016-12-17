@@ -332,6 +332,8 @@
     <Content Include="Views\FundsTransferByCustomerService2\transferResult.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\transferWithBeneCode.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\transferWithBeneDetail.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\getBalance.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\getBalanceResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

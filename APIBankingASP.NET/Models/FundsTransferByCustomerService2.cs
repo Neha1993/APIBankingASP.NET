@@ -103,5 +103,24 @@ namespace APIBankingASP.NET.Models
                 this.transferStatus = new TransactionStatus();
             }
         }
+
+        public class GetBalanceRequest : Credentials
+        {
+            [Required]
+            public String appID { get; set; }
+            public String customerID { get; set; }
+            public String AccountNumber { get; set; }
+
+        }
+
+        public class GetBalanceResult
+        {
+            [Required]
+            public String version;
+            public String accountCurrencyCode;
+            public Decimal accountBalanceAmount;
+            public Boolean? lowBalanceAlert;
+
+        }
     }
 }
