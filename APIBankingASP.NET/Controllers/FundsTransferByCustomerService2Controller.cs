@@ -39,13 +39,13 @@ namespace APIBankingASP.NET.Controllers
             return View(req);
         }
 
-        public ActionResult getStatus(String requestReferenceNo, String customerID, String appID)
+        public ActionResult getStatus()
         {
             GetStatusRequest req = new GetStatusRequest();
 
-            req.appID = appID;
-            req.customerID = customerID;
-            req.requestReferenceNo = requestReferenceNo;
+            req.appID = "299915";
+            req.customerID = "299915";
+            req.requestReferenceNo = "012140";
 
             return View(req);
         }
