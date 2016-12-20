@@ -39,6 +39,17 @@ namespace APIBankingASP.NET.Controllers
             return View(req);
         }
 
+        public ActionResult getStatus(String requestReferenceNo, String customerID, String appID)
+        {
+            GetStatusRequest req = new GetStatusRequest();
+
+            req.appID = appID;
+            req.customerID = customerID;
+            req.requestReferenceNo = requestReferenceNo;
+
+            return View(req);
+        }
+
         // GET: FundsTransferByCustomerService with beneficiary detail
         public ActionResult transferWithBeneDetail()
         {
@@ -178,6 +189,64 @@ namespace APIBankingASP.NET.Controllers
                 result.accountBalanceAmount = Convert.ToDecimal(apiRep.accountBalanceAmount);
                 result.lowBalanceAlert = apiRep.lowBalanceAlert;
                 return View("getBalanceResult", result);
+
+            }
+            /* 
+             * the following exceptions have to be caught separately, even when you handle then the same way 
+             * this is because of the way the APIBanking.Fault is created
+             */
+            catch (MessageSecurityException e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            catch (FaultException e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            catch (Exception e)
+            {
+                fault = new APIBankingASP.NET.Models.Fault(new APIBanking.Fault(e));
+            }
+            return View("fault", fault);
+
+        }
+
+        [HttpPost]
+        public ActionResult getStatus(GetStatusRequest request)
+        {
+            if (TryValidateModel(request) == false)
+            {
+                return View(request);
+            }
+
+            APIBankingASP.NET.Models.Fault fault;
+
+            APIBanking.Environment env = request.buildEnvironment();
+
+            com.quantiguous.ft2.getStatus apiReq = new com.quantiguous.ft2.getStatus();
+            com.quantiguous.ft2.getStatusResponse apiRep;
+
+            apiReq.appID = request.appID;
+            apiReq.customerID = request.customerID;
+            apiReq.requestReferenceNo = request.requestReferenceNo;
+
+            try
+            {
+                apiRep = FundsTransferByCustomerClient.getStatus(env, apiReq);
+
+                GetStatusResult result = new GetStatusResult();
+
+                result.version = apiRep.version;
+                result.transferType = getTransferType(apiRep.transferType);
+                result.reqTransferType = getTransferType(apiRep.reqTransferType);
+                result.transactionDate = apiRep.transactionDate;
+                result.transferAmount = Convert.ToDecimal(apiRep.transferAmount);
+                result.transferCurrencyCode = apiRep.transferCurrencyCode.ToString();
+                result.transferStatus.statusCode = getStatusCode(apiRep.transactionStatus.statusCode);
+                result.transferStatus.bankReferenceNo = apiRep.transactionStatus.bankReferenceNo;
+                result.transferStatus.beneReferenceNo = apiRep.transactionStatus.beneficiaryReferenceNo;
+                result.transferStatus.reason = apiRep.transactionStatus.reason;
+                return View("getStatusResult", result);
 
             }
             /* 

@@ -88,5 +88,33 @@ namespace APIBankingASP.NET.Helpers
                 return response;
             }
         }
+
+        public static getStatusResponse getStatus(APIBanking.Environment env, getStatus request)
+        {
+            fundsTransferByCustomerService2Client client = createClient(env);
+
+            request.version = VERSION;
+
+            using (new System.ServiceModel.OperationContextScope((System.ServiceModel.IClientChannel)client.InnerChannel))
+            {
+                System.Net.ServicePointManager.SecurityProtocol = env.getSecurityProtocol();
+
+                System.ServiceModel.Web.WebOperationContext.Current.OutgoingRequest.UserAgent = App.USER_AGENT;
+
+
+                IDictionaryEnumerator headers = env.getHeaders().GetEnumerator();
+                while (headers.MoveNext())
+                {
+                    if (headers.Key != null && headers.Value != null)
+                    {
+                        System.ServiceModel.Web.WebOperationContext.Current.OutgoingRequest.Headers.Add(headers.Key.ToString(), headers.Value.ToString());
+                    }
+                }
+
+                getStatusResponse response = client.getStatus(request);
+
+                return response;
+            }
+        }
     }
 }
