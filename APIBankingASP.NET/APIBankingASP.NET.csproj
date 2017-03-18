@@ -295,9 +295,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getBalanceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -368,10 +365,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Views\IMTService\addBeneficiaryResult.cshtml" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
