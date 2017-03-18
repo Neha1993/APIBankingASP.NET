@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/5700f7d9-2757-425a-8273-a30f581bd23e/resourcegroups/apibanking/providers/microsoft.insights/components/APIBankingASP.NET</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/9bcae958-e735-4544-8d66-550421bcb35d/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/APIBankingASP.NET</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -156,6 +156,7 @@
     <Compile Include="Controllers\DomesticRemittanceByPartnerServiceController.cs" />
     <Compile Include="Controllers\FundsTransferByCustomerService2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IMTServiceController.cs" />
     <Compile Include="Controllers\InwardRemittanceByPartnerServiceController.cs" />
     <Compile Include="Helpers\App.cs" />
     <Compile Include="Helpers\DomesticRemittanceByPartnerClient.cs" />
@@ -163,14 +164,21 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FundsTransferByCustomerClient.cs" />
+    <Compile Include="Helpers\IMTClient.cs" />
     <Compile Include="Helpers\InwardRemittanceByPartnerClient.cs" />
     <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\Fault.cs" />
     <Compile Include="Models\DomesticRemittanceByPartnerService.cs" />
     <Compile Include="Models\FundsTransferByCustomerService2.cs" />
+    <Compile Include="Models\IMTService.cs" />
     <Compile Include="Models\InwardRemittanceByPartnerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\com.quantiguous.ft2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\com.quantiguous.imt\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -199,6 +207,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\apibanking - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apibanking - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\apibanking.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -241,6 +250,54 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.addBeneficiaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.addBeneficiaryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.cancelTransferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.cancelTransferResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.deleteBeneficiaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.deleteBeneficiaryResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.getBeneficiariesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.getBeneficiariesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.getTransferStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.getTransferStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.initiateTransferResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\com.quantiguous.imt\APIBankingASP.NET.com.quantiguous.imt.initiateTransferResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\com.quantiguous.imt\configuration91.svcinfo" />
+    <None Include="Service References\com.quantiguous.imt\configuration.svcinfo" />
+    <None Include="Service References\com.quantiguous.imt\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Service References\com.quantiguous.inw\APIBankingASP.NET.com.quantiguous.inw.getBalanceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -261,6 +318,10 @@
     </Content>
     <None Include="Service References\com.quantiguous.ft2\fundsTransferByCustomerService2.wsdl" />
     <None Include="Service References\com.quantiguous.ft2\fundsTransferByCustomerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\com.quantiguous.imt\IMTService.wsdl" />
+    <None Include="Service References\com.quantiguous.imt\IMTService.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\com.quantiguous.inw\configuration91.svcinfo" />
@@ -306,9 +367,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <None Include="Views\IMTService\addBeneficiaryResult.cshtml" />
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -340,6 +400,7 @@
     <Content Include="Views\FundsTransferByCustomerService2\getStatus.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\getStatusResult.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\IMTService\addBeneficiary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -358,6 +419,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\com.quantiguous.ft2\" />
+    <WCFMetadataStorage Include="Service References\com.quantiguous.imt\" />
     <WCFMetadataStorage Include="Service References\com.quantiguous.inw\" />
     <WCFMetadataStorage Include="Service References\com.quantiguous.smb\" />
   </ItemGroup>
