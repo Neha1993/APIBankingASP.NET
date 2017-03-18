@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://www.quantiguous.com/services" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="IMTService" targetNamespace="http://www.quantiguous.com/services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="IMTServiceHttpBinding" originalBindingStyle="document" />
+        <generatedXSD location="IMTService_InlineSchema1.xsd" />
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" targetNamespace="http://www.quantiguous.com/services">
+      <xsd:include schemaLocation="http://api.quantiguous.com/IMTService?xsd=xsd0" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="addBeneficiaryRequestMsg">
+    <wsdl:part name="addBeneficiaryParameters" element="tns:addBeneficiary" />
+  </wsdl:message>
+  <wsdl:message name="addBeneficiaryResponseMsg">
+    <wsdl:part name="addBeneficiaryResult" element="tns:addBeneficiaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteBeneficiaryRequestMsg">
+    <wsdl:part name="deleteBeneficiaryParameters" element="tns:deleteBeneficiary" />
+  </wsdl:message>
+  <wsdl:message name="deleteBeneficiaryResponseMsg">
+    <wsdl:part name="deleteBeneficiaryResult" element="tns:deleteBeneficiaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="initiateTransferRequestMsg">
+    <wsdl:part name="initiateTransferParameters" element="tns:initiateTransfer" />
+  </wsdl:message>
+  <wsdl:message name="initiateTransferResponseMsg">
+    <wsdl:part name="initiateTransferResult" element="tns:initiateTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTransferStatusRequestMsg">
+    <wsdl:part name="getTransferStatusParameters" element="tns:getTransferStatus" />
+  </wsdl:message>
+  <wsdl:message name="getTransferStatusResponseMsg">
+    <wsdl:part name="getTransferStatusResult" element="tns:getTransferStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="cancelTransferRequestMsg">
+    <wsdl:part name="cancelTransferParameters" element="tns:cancelTransfer" />
+  </wsdl:message>
+  <wsdl:message name="cancelTransferResponseMsg">
+    <wsdl:part name="cancelTransferResult" element="tns:cancelTransferResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBeneficiariesRequestMsg">
+    <wsdl:part name="getBeneficiariesParameters" element="tns:getBeneficiaries" />
+  </wsdl:message>
+  <wsdl:message name="getBeneficiariesResponseMsg">
+    <wsdl:part name="getBeneficiariesResult" element="tns:getBeneficiariesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IMTService">
+    <wsdl:operation name="addBeneficiary">
+      <wsdl:documentation>To add a beneficiary for IMT. Only registered beneficiares can be used for initiateTransfer . A beneficiary is identified by a mobile no, adding the same beneficiary again is not allowed.</wsdl:documentation>
+      <wsdl:input name="addBeneficiaryRequest" message="tns:addBeneficiaryRequestMsg" />
+      <wsdl:output name="addBeneficiaryResponse" message="tns:addBeneficiaryResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteBeneficiary">
+      <wsdl:documentation>To delete a previously registered beneficiary. Once cancelled no further transactions are allowed. Existing transfers, that are in process, will complete. </wsdl:documentation>
+      <wsdl:input name="deleteBeneficiaryRequest" message="tns:deleteBeneficiaryRequestMsg" />
+      <wsdl:output name="deleteBeneficiaryResponse" message="tns:deleteBeneficiaryResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="initiateTransfer">
+      <wsdl:documentation>To initiate an IMT for a registered beneficiary. Once initiated, the transaction will either complete, or expire. Initiated transfers can be called via the cancelTransfer operation, before they are completed. </wsdl:documentation>
+      <wsdl:input name="initiateTransferRequest" message="tns:initiateTransferRequestMsg" />
+      <wsdl:output name="initiateTransferResponse" message="tns:initiateTransferResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getTransferStatus">
+      <wsdl:documentation>To get the current status from the lifecycle of an IMT transfer. The transfer can be fetched basis the uniqueRequestNo of the initiateTransfer, as well as the imtReferenceNo.</wsdl:documentation>
+      <wsdl:input name="getTransferStatusRequest" message="tns:getTransferStatusRequestMsg" />
+      <wsdl:output name="getTransferStatusResponse" message="tns:getTransferStatusResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelTransfer">
+      <wsdl:documentation>To cancel a previously initiated IMT. Cancellations are allowed only for those transfers that were initiated by the service. </wsdl:documentation>
+      <wsdl:input name="cancelTransferRequest" message="tns:cancelTransferRequestMsg" />
+      <wsdl:output name="cancelTransferResponse" message="tns:cancelTransferResponseMsg" />
+    </wsdl:operation>
+    <wsdl:operation name="getBeneficiaries">
+      <wsdl:documentation>To get the list of registered beneficiaries, optionally a date criteria can be specified to restrict results to beneficiaries registered for a given date range.</wsdl:documentation>
+      <wsdl:input name="getBeneficiariesRequest" message="tns:getBeneficiariesRequestMsg" />
+      <wsdl:output name="getBeneficiariesResponse" message="tns:getBeneficiariesResponseMsg" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IMTServiceHttpBinding" type="tns:IMTService">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addBeneficiary">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/IMTService/addBeneficiary" />
+      <wsdl:input name="addBeneficiaryRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addBeneficiaryResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBeneficiary">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/IMTService/deleteBeneficiary" />
+      <wsdl:input name="deleteBeneficiaryRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteBeneficiaryResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initiateTransfer">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/IMTService/initiateTransfer" />
+      <wsdl:input name="initiateTransferRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="initiateTransferResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTransferStatus">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/IMTService/getTransferStatus" />
+      <wsdl:input name="getTransferStatusRequest">
+        <soap12:body use="literal" parts="getTransferStatusParameters" />
+      </wsdl:input>
+      <wsdl:output name="getTransferStatusResponse">
+        <soap12:body use="literal" parts="getTransferStatusResult" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTransfer">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/IMTService/cancelTransfer" />
+      <wsdl:input name="cancelTransferRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelTransferResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBeneficiaries">
+      <soap12:operation soapAction="http://www.quantiguous.com/services/IMTService/getBeneficiaries" />
+      <wsdl:input name="getBeneficiariesRequest">
+        <soap12:body use="literal" parts="getBeneficiariesParameters" />
+      </wsdl:input>
+      <wsdl:output name="getBeneficiariesResponse">
+        <soap12:body use="literal" parts="getBeneficiariesResult" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IMTServiceHttpService">
+    <wsdl:port name="IMTServiceHttpPort" binding="tns:IMTServiceHttpBinding">
+      <soap12:address location="http://api.quantiguous.com/IMTService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

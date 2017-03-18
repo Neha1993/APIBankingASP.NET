@@ -19,11 +19,6 @@ namespace APIBankingASP.NET.Helpers
 
             client = new InwardRemittanceByPartnerServiceClient(getBinding(env), env.getEndpointAddress(SERVICE_NAME));
 
-            if (env.needsClientCertificate())
-            {
-                client.ClientCredentials.ClientCertificate.Certificate = env.getClientCertificate();
-            }
-
             if (env.needsHTTPBasicAuth())
             {
                 client.ClientCredentials.UserName.UserName = env.getUser();

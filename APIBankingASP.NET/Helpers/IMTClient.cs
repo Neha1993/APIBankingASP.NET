@@ -1,24 +1,23 @@
 ﻿using APIBanking;
-using APIBankingASP.NET.com.quantiguous.smb;
-using APIBankingASP.NET.Helpers;
+using APIBankingASP.NET.com.quantiguous.imt;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace APIBankingASP.NET
+namespace APIBankingASP.NET.Helpers
 {
-    public class DomesticRemittanceByPartnerClient : SoapClient
+    public class IMTClient : SoapClient
     {
         public static readonly String VERSION = "1";
-        public static readonly String SERVICE_NAME = "DomesticRemittanceByPartnerService";
+        public static readonly String SERVICE_NAME = "IMTService";
 
-        private static DomesticRemittanceByPartnerServiceClient createClient(APIBanking.Environment env)
+        private static MTServiceClient createClient(APIBanking.Environment env)
         {
-            DomesticRemittanceByPartnerServiceClient client;
+            MTServiceClient client;
 
-            client = new DomesticRemittanceByPartnerServiceClient(getBinding(env), env.getEndpointAddress(SERVICE_NAME));
+            client = new MTServiceClient(getBinding(env), env.getEndpointAddress(SERVICE_NAME));
 
             if (env.needsHTTPBasicAuth())
             {
@@ -29,9 +28,9 @@ namespace APIBankingASP.NET
             return client;
         }
 
-        public static getBalanceResponse getBalance(APIBanking.Environment env, getBalance request)
+        public static addBeneficiaryResponse addBeneficiary(APIBanking.Environment env, addBeneficiary request)
         {
-            DomesticRemittanceByPartnerServiceClient client = createClient(env);
+            MTServiceClient client = createClient(env);
 
             request.version = VERSION;
 
@@ -51,7 +50,7 @@ namespace APIBankingASP.NET
                     }
                 }
 
-                getBalanceResponse response = client.getBalance(request);
+                addBeneficiaryResponse response = client.addBeneficiary(request);
 
                 return response;
             }
