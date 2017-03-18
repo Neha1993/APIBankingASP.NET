@@ -122,5 +122,32 @@ namespace APIBankingASP.NET.Models
             public Boolean? lowBalanceAlert;
 
         }
+
+        public class GetStatusRequest : Credentials
+        {
+            [Required]
+            public String appID { get; set; }
+            public String customerID { get; set; }
+            public String requestReferenceNo { get; set; }
+
+        }
+
+        public class GetStatusResult
+        {
+            [Required]
+            public String version;
+            public TransferType? transferType;
+            public TransferType? reqTransferType;
+            public DateTime transactionDate;
+            public Decimal transferAmount;
+            public String transferCurrencyCode;
+            public TransactionStatus transferStatus;
+
+            public GetStatusResult()
+            {
+                this.transferStatus = new TransactionStatus();
+            }
+
+        }
     }
 }

@@ -26,7 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/9bcae958-e735-4544-8d66-550421bcb35d/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/APIBankingASP.NET</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/5700f7d9-2757-425a-8273-a30f581bd23e/resourcegroups/apibanking/providers/microsoft.insights/components/APIBankingASP.NET</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -197,7 +197,8 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\apibanking.pubxml" />
+    <None Include="Properties\PublishProfiles\apibanking - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apibanking - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -305,7 +306,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -334,6 +337,9 @@
     <Content Include="Views\FundsTransferByCustomerService2\transferWithBeneDetail.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\getBalance.cshtml" />
     <Content Include="Views\FundsTransferByCustomerService2\getBalanceResult.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\getStatus.cshtml" />
+    <Content Include="Views\FundsTransferByCustomerService2\getStatusResult.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
